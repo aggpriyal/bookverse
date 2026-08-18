@@ -300,13 +300,9 @@ function saveCart() {
 document.getElementById("clear-cart").addEventListener(
     "click",
     function() {
-
         cart = [];
-
         saveCart();
-
         displayCart();
-
     }
 );
 
