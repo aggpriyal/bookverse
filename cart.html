@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cart - The BookVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <h2>The BookVerse</h2>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="books.html">Books</a>
+
+            <a href="cart.html">Cart 🛒</a>
+
+            <span id="user-area"></span>
+
+            <button id="login-button" class="nav-login">
+                Login
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- CART -->
+
+    <section class="cart">
+
+        <p class="small-text">
+            YOUR SELECTION
+        </p>
+
+        <h1>Your Cart</h1>
+
+
+        <!-- JavaScript will show cart items here -->
+
+        <div id="cart-items"></div>
+
+
+        <div class="cart-summary">
+
+            <h2>
+                Total: ₹<span id="cart-total">0</span>
+            </h2>
+
+            <button id="clear-cart">
+                Clear Cart
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

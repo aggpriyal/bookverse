@@ -1,4 +1,9 @@
+// ==========================================
+// BOOKS
+// ==========================================
+
 const books = [
+
     {
         id: 1,
         title: "The Alchemist",
@@ -29,19 +34,395 @@ const books = [
         author: "Morgan Housel",
         price: 349,
         emoji: "📕"
+    },
+
+    {
+        id: 5,
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 279,
+        emoji: "📓"
+    },
+
+    {
+        id: 6,
+        title: "Pride and Prejudice",
+        author: "Jane Austen",
+        price: 329,
+        emoji: "📔"
     }
+
 ];
 
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// ==========================================
+// GET USERS FROM LOCAL STORAGE
+// ==========================================
+
+let users =
+    JSON.parse(localStorage.getItem("users")) || [];
 
 
-const bookContainer = document.getElementById("book-container");
+
+// ==========================================
+// GET CURRENT USER
+// ==========================================
+
+let currentUser =
+    JSON.parse(localStorage.getItem("currentUser"));
 
 
-function displayBooks() {
 
-    bookContainer.innerHTML = "";
+// ==========================================
+// GET CART FROM LOCAL STORAGE
+// ==========================================
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+// ==========================================
+// LOGIN POPUP
+// ==========================================
+
+const loginButton =
+    document.getElementById("login-button");
+
+const loginPopup =
+    document.getElementById("login-popup");
+
+const closeLogin =
+    document.getElementById("close-login");
+
+
+
+if (loginButton) {
+
+    loginButton.addEventListener("click", function() {
+
+        loginPopup.style.display = "flex";
+
+    });
+
+}
+
+
+
+if (closeLogin) {
+
+    closeLogin.addEventListener("click", function() {
+
+        loginPopup.style.display = "none";
+
+    });
+
+}
+
+
+
+// ==========================================
+// SIGNUP POPUP
+// ==========================================
+
+const signupPopup =
+    document.getElementById("signup-popup");
+
+const showSignup =
+    document.getElementById("show-signup");
+
+const closeSignup =
+    document.getElementById("close-signup");
+
+
+
+if (showSignup) {
+
+    showSignup.addEventListener("click", function() {
+
+        loginPopup.style.display = "none";
+
+        signupPopup.style.display = "flex";
+
+    });
+
+}
+
+
+
+if (closeSignup) {
+
+    closeSignup.addEventListener("click", function() {
+
+        signupPopup.style.display = "none";
+
+    });
+
+}
+
+
+
+// ==========================================
+// GO BACK TO LOGIN
+// ==========================================
+
+const showLogin =
+    document.getElementById("show-login");
+
+
+
+if (showLogin) {
+
+    showLogin.addEventListener("click", function() {
+
+        signupPopup.style.display = "none";
+
+        loginPopup.style.display = "flex";
+
+    });
+
+}
+
+
+
+// ==========================================
+// SIGN UP
+// ==========================================
+
+const signupForm =
+    document.getElementById("signup-form");
+
+
+
+if (signupForm) {
+
+    signupForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("signup-name").value;
+
+        const email =
+            document.getElementById("signup-email").value;
+
+        const password =
+            document.getElementById("signup-password").value;
+
+
+
+        // Check if email already exists
+
+        const userExists =
+            users.find(function(user) {
+
+                return user.email === email;
+
+            });
+
+
+
+        if (userExists) {
+
+            document.getElementById(
+                "signup-message"
+            ).innerText =
+                "This email is already registered.";
+
+            return;
+
+        }
+
+
+
+        // Create a new user
+
+        const newUser = {
+
+            name: name,
+
+            email: email,
+
+            password: password
+
+        };
+
+
+
+        // Add user to array
+
+        users.push(newUser);
+
+
+
+        // Save users
+
+        localStorage.setItem(
+            "users",
+            JSON.stringify(users)
+        );
+
+
+
+        document.getElementById(
+            "signup-message"
+        ).innerText =
+            "Account created successfully!";
+
+
+
+        signupForm.reset();
+
+    });
+
+}
+
+
+
+// ==========================================
+// LOGIN
+// ==========================================
+
+const loginForm =
+    document.getElementById("login-form");
+
+
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("login-email").value;
+
+        const password =
+            document.getElementById("login-password").value;
+
+
+
+        // Find the user
+
+        const user =
+            users.find(function(user) {
+
+                return user.email === email &&
+                       user.password === password;
+
+            });
+
+
+
+        if (user) {
+
+            // Save current user
+
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify(user)
+            );
+
+
+
+            document.getElementById(
+                "login-message"
+            ).innerText =
+                "Login successful!";
+
+
+
+            setTimeout(function() {
+
+                loginPopup.style.display = "none";
+
+                window.location.reload();
+
+            }, 500);
+
+        }
+
+        else {
+
+            document.getElementById(
+                "login-message"
+            ).innerText =
+                "Wrong email or password.";
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================================
+// LOGOUT
+// ==========================================
+
+function logout() {
+
+    localStorage.removeItem("currentUser");
+
+    window.location.reload();
+
+}
+
+
+
+// ==========================================
+// SHOW USER IN NAVBAR
+// ==========================================
+
+const userArea =
+    document.getElementById("user-area");
+
+
+
+if (userArea) {
+
+    if (currentUser) {
+
+        userArea.innerHTML = `
+
+            <span>
+                Hi, ${currentUser.name}
+            </span>
+
+            <button onclick="logout()">
+                Logout
+            </button>
+
+        `;
+
+
+
+        if (loginButton) {
+
+            loginButton.style.display = "none";
+
+        }
+
+    }
+
+}
+
+
+
+// ==========================================
+// DISPLAY BOOKS
+// ==========================================
+
+const bookContainer =
+    document.getElementById("book-container");
+
+
+
+if (bookContainer) {
 
     books.forEach(function(book) {
 
@@ -53,20 +434,19 @@ function displayBooks() {
                     ${book.emoji}
                 </div>
 
-                <h3>
+                <h2>
                     ${book.title}
-                </h3>
+                </h2>
 
                 <p>
                     ${book.author}
                 </p>
 
-                <p class="price">
+                <h3>
                     ₹${book.price}
-                </p>
+                </h3>
 
                 <button
-                    class="add-btn"
                     onclick="addToCart(${book.id})">
 
                     Add to Cart
@@ -76,31 +456,65 @@ function displayBooks() {
             </div>
 
         `;
+
     });
+
 }
 
 
+
+// ==========================================
+// ADD BOOK TO CART
+// ==========================================
+
 function addToCart(id) {
 
-    let book = books.find(function(book) {
 
-        return book.id === id;
+    // Check login
 
-    });
+    if (!currentUser) {
+
+        alert("Please login first.");
+
+        return;
+
+    }
 
 
-    let existingBook = cart.find(function(item) {
 
-        return item.id === id;
+    // Find the book
 
-    });
+    const book =
+        books.find(function(book) {
+
+            return book.id === id;
+
+        });
+
+
+
+    // Check if already in cart
+
+    const existingBook =
+        cart.find(function(item) {
+
+            return item.id === id;
+
+        });
+
 
 
     if (existingBook) {
 
+        // Increase quantity
+
         existingBook.quantity++;
 
-    } else {
+    }
+
+    else {
+
+        // Add new book
 
         cart.push({
 
@@ -115,51 +529,91 @@ function addToCart(id) {
             quantity: 1
 
         });
+
     }
 
 
+
+    // Save cart
+
     saveCart();
 
-    displayCart();
+
+
+    alert("Book added to cart!");
+
 }
+
+
+
+// ==========================================
+// SAVE CART
+// ==========================================
+
+function saveCart() {
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+
+// ==========================================
+// DISPLAY CART
+// ==========================================
+
+const cartItems =
+    document.getElementById("cart-items");
+
+
+
+if (cartItems) {
+
+    displayCart();
+
+}
+
 
 
 function displayCart() {
 
-    const cartItems = document.getElementById("cart-items");
-
-    const totalElement = document.getElementById("cart-total");
-
-    const countElement = document.getElementById("cart-count");
-
-
     cartItems.innerHTML = "";
 
 
+
+    // If cart is empty
+
     if (cart.length === 0) {
 
-        cartItems.innerHTML = `
-            <p>Your cart is empty.</p>
-        `;
+        cartItems.innerHTML =
+            "<p>Your cart is empty.</p>";
 
-        totalElement.innerText = 0;
-
-        countElement.innerText = 0;
+        document.getElementById(
+            "cart-total"
+        ).innerText = 0;
 
         return;
+
     }
+
 
 
     let total = 0;
 
-    let count = 0;
 
 
     cart.forEach(function(item) {
 
-        total += item.price * item.quantity;
 
-        count += item.quantity;
+        // Calculate total
+
+        total =
+            total +
+            item.price * item.quantity;
+
 
 
         cartItems.innerHTML += `
@@ -177,13 +631,15 @@ function displayCart() {
                     </p>
 
                     <p>
-                        ₹${item.price} × ${item.quantity}
+                        ₹${item.price}
+                        ×
+                        ${item.quantity}
                     </p>
 
                 </div>
 
 
-                <div class="quantity">
+                <div>
 
                     <button
                         onclick="decreaseQuantity(${item.id})">
@@ -193,9 +649,7 @@ function displayCart() {
                     </button>
 
 
-                    <span>
-                        ${item.quantity}
-                    </span>
+                    ${item.quantity}
 
 
                     <button
@@ -207,7 +661,6 @@ function displayCart() {
 
 
                     <button
-                        class="remove-btn"
                         onclick="removeFromCart(${item.id})">
 
                         Remove
@@ -219,94 +672,128 @@ function displayCart() {
             </div>
 
         `;
+
     });
 
 
-    totalElement.innerText = total;
 
-    countElement.innerText = count;
+    document.getElementById(
+        "cart-total"
+    ).innerText = total;
+
 }
 
 
+
+// ==========================================
+// INCREASE QUANTITY
+// ==========================================
+
 function increaseQuantity(id) {
 
-    let book = cart.find(function(item) {
+    const book =
+        cart.find(function(item) {
 
-        return item.id === id;
+            return item.id === id;
 
-    });
+        });
+
 
 
     book.quantity++;
 
+
+
     saveCart();
 
     displayCart();
+
 }
 
 
+
+// ==========================================
+// DECREASE QUANTITY
+// ==========================================
+
 function decreaseQuantity(id) {
 
-    let book = cart.find(function(item) {
+    const book =
+        cart.find(function(item) {
 
-        return item.id === id;
+            return item.id === id;
 
-    });
+        });
+
 
 
     book.quantity--;
 
 
+
     if (book.quantity === 0) {
 
-        cart = cart.filter(function(item) {
+        removeFromCart(id);
+
+        return;
+
+    }
+
+
+
+    saveCart();
+
+    displayCart();
+
+}
+
+
+
+// ==========================================
+// REMOVE BOOK FROM CART
+// ==========================================
+
+function removeFromCart(id) {
+
+    cart =
+        cart.filter(function(item) {
 
             return item.id !== id;
 
         });
-    }
+
 
 
     saveCart();
 
     displayCart();
+
 }
 
 
-function removeFromCart(id) {
 
-    cart = cart.filter(function(item) {
+// ==========================================
+// CLEAR CART
+// ==========================================
 
-        return item.id !== id;
+const clearCart =
+    document.getElementById("clear-cart");
+
+
+
+if (clearCart) {
+
+    clearCart.addEventListener("click", function() {
+
+
+        cart = [];
+
+
+        saveCart();
+
+
+        displayCart();
 
     });
 
-
-    saveCart();
-
-    displayCart();
 }
-
-
-function saveCart() {
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-}
-
-
-document.getElementById("clear-cart").addEventListener(
-    "click",
-    function() {
-        cart = [];
-        saveCart();
-        displayCart();
-    }
-);
-
-
-displayBooks();
-
-displayCart();
