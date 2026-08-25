@@ -1,6 +1,6 @@
-// ==========================================
+
 // BOOKS
-// ==========================================
+
 
 const books = [
 
@@ -9,7 +9,7 @@ const books = [
         title: "The Alchemist",
         author: "Paulo Coelho",
         price: 299,
-        emoji: "📘"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT35UTqe-I5Id6J2F1KdueIn1ExIX3nMiNYM1ZmXBI08g&s=10"
     },
 
     {
@@ -17,7 +17,7 @@ const books = [
         title: "Atomic Habits",
         author: "James Clear",
         price: 399,
-        emoji: "📗"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8ARDuN7MBoD9cPjB3KNIoSKTbxOyaz137jWK5yVscaw&s=10"
     },
 
     {
@@ -25,7 +25,7 @@ const books = [
         title: "Ikigai",
         author: "Hector Garcia",
         price: 249,
-        emoji: "📙"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVW7BcWY6tHpBdlO-tD4v3DL44CaIo6Ec-SxNLcL9QQ&s=10"
     },
 
     {
@@ -33,7 +33,7 @@ const books = [
         title: "The Psychology of Money",
         author: "Morgan Housel",
         price: 349,
-        emoji: "📕"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4e8GZDve-S3E7Z9MWbnBg6DxpIBHTSNmmSdMV6wip4g&s=10"
     },
 
     {
@@ -41,7 +41,7 @@ const books = [
         title: "The Great Gatsby",
         author: "F. Scott Fitzgerald",
         price: 279,
-        emoji: "📓"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryQtHdFYSlxwv4U2jB0TlQ-a55uLtqvpNLDcbwkmHGw&s=10"
     },
 
     {
@@ -49,43 +49,31 @@ const books = [
         title: "Pride and Prejudice",
         author: "Jane Austen",
         price: 329,
-        emoji: "📔"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTovy_OmGZIEdyamtmV1ZD8rmgitXGKqSQpwl2fVLIIdQ&s"
     }
+
 
 ];
 
 
-
-// ==========================================
 // GET USERS FROM LOCAL STORAGE
-// ==========================================
-
 let users =
     JSON.parse(localStorage.getItem("users")) || [];
 
-
-
-// ==========================================
 // GET CURRENT USER
-// ==========================================
-
 let currentUser =
     JSON.parse(localStorage.getItem("currentUser"));
 
-
-
-// ==========================================
 // GET CART FROM LOCAL STORAGE
-// ==========================================
 
 let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
 
 
 
-// ==========================================
+
 // LOGIN POPUP
-// ==========================================
+
 
 const loginButton =
     document.getElementById("login-button");
@@ -122,9 +110,9 @@ if (closeLogin) {
 
 
 
-// ==========================================
+
 // SIGNUP POPUP
-// ==========================================
+
 
 const signupPopup =
     document.getElementById("signup-popup");
@@ -163,9 +151,9 @@ if (closeSignup) {
 
 
 
-// ==========================================
+
 // GO BACK TO LOGIN
-// ==========================================
+
 
 const showLogin =
     document.getElementById("show-login");
@@ -185,10 +173,8 @@ if (showLogin) {
 }
 
 
-
-// ==========================================
 // SIGN UP
-// ==========================================
+
 
 const signupForm =
     document.getElementById("signup-form");
@@ -281,9 +267,9 @@ if (signupForm) {
 
 
 
-// ==========================================
+
 // LOGIN
-// ==========================================
+
 
 const loginForm =
     document.getElementById("login-form");
@@ -360,9 +346,9 @@ if (loginForm) {
 
 
 
-// ==========================================
+
 // LOGOUT
-// ==========================================
+
 
 function logout() {
 
@@ -374,9 +360,9 @@ function logout() {
 
 
 
-// ==========================================
+
 // SHOW USER IN NAVBAR
-// ==========================================
+
 
 const userArea =
     document.getElementById("user-area");
@@ -413,9 +399,9 @@ if (userArea) {
 
 
 
-// ==========================================
+
 // DISPLAY BOOKS
-// ==========================================
+
 
 const bookContainer =
     document.getElementById("book-container");
@@ -431,7 +417,7 @@ if (bookContainer) {
             <div class="book-card">
 
                 <div class="book-cover">
-                    ${book.emoji}
+                <img src="${book.image}" alt="${book.title}">
                 </div>
 
                 <h2>
@@ -463,9 +449,9 @@ if (bookContainer) {
 
 
 
-// ==========================================
+
 // ADD BOOK TO CART
-// ==========================================
+
 
 function addToCart(id) {
 
@@ -546,9 +532,9 @@ function addToCart(id) {
 
 
 
-// ==========================================
+
 // SAVE CART
-// ==========================================
+
 
 function saveCart() {
 
@@ -561,9 +547,9 @@ function saveCart() {
 
 
 
-// ==========================================
+
 // DISPLAY CART
-// ==========================================
+
 
 const cartItems =
     document.getElementById("cart-items");
@@ -685,9 +671,9 @@ function displayCart() {
 
 
 
-// ==========================================
+
 // INCREASE QUANTITY
-// ==========================================
+
 
 function increaseQuantity(id) {
 
@@ -712,9 +698,9 @@ function increaseQuantity(id) {
 
 
 
-// ==========================================
+
 // DECREASE QUANTITY
-// ==========================================
+
 
 function decreaseQuantity(id) {
 
@@ -749,9 +735,9 @@ function decreaseQuantity(id) {
 
 
 
-// ==========================================
+
 // REMOVE BOOK FROM CART
-// ==========================================
+
 
 function removeFromCart(id) {
 
@@ -772,9 +758,9 @@ function removeFromCart(id) {
 
 
 
-// ==========================================
+
 // CLEAR CART
-// ==========================================
+
 
 const clearCart =
     document.getElementById("clear-cart");
