@@ -397,11 +397,7 @@ if (userArea) {
 
 }
 
-
-
-
 // DISPLAY BOOKS
-
 
 const bookContainer =
     document.getElementById("book-container");
@@ -531,8 +527,6 @@ function addToCart(id) {
 }
 
 
-
-
 // SAVE CART
 
 
@@ -544,9 +538,6 @@ function saveCart() {
     );
 
 }
-
-
-
 
 // DISPLAY CART
 
