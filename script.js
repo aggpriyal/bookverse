@@ -9,7 +9,9 @@ const books = [
         title: "The Alchemist",
         author: "Paulo Coelho",
         price: 299,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT35UTqe-I5Id6J2F1KdueIn1ExIX3nMiNYM1ZmXBI08g&s=10"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT35UTqe-I5Id6J2F1KdueIn1ExIX3nMiNYM1ZmXBI08g&s=10",
+        genre: "non-fiction",
+        language: "english"
     },
 
     {
@@ -17,7 +19,9 @@ const books = [
         title: "Atomic Habits",
         author: "James Clear",
         price: 399,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8ARDuN7MBoD9cPjB3KNIoSKTbxOyaz137jWK5yVscaw&s=10"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8ARDuN7MBoD9cPjB3KNIoSKTbxOyaz137jWK5yVscaw&s=10",
+        genre: "non-fiction",
+        language: "english"
     },
 
     {
@@ -25,7 +29,9 @@ const books = [
         title: "Ikigai",
         author: "Hector Garcia",
         price: 249,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVW7BcWY6tHpBdlO-tD4v3DL44CaIo6Ec-SxNLcL9QQ&s=10"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVW7BcWY6tHpBdlO-tD4v3DL44CaIo6Ec-SxNLcL9QQ&s=10",
+        genre: "non-fiction",
+        language: "english"
     },
 
     {
@@ -33,7 +39,9 @@ const books = [
         title: "The Psychology of Money",
         author: "Morgan Housel",
         price: 349,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4e8GZDve-S3E7Z9MWbnBg6DxpIBHTSNmmSdMV6wip4g&s=10"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4e8GZDve-S3E7Z9MWbnBg6DxpIBHTSNmmSdMV6wip4g&s=10",
+        genre: "non-fiction",
+        language: "english"
     },
 
     {
@@ -41,7 +49,9 @@ const books = [
         title: "The Great Gatsby",
         author: "F. Scott Fitzgerald",
         price: 279,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryQtHdFYSlxwv4U2jB0TlQ-a55uLtqvpNLDcbwkmHGw&s=10"
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryQtHdFYSlxwv4U2jB0TlQ-a55uLtqvpNLDcbwkmHGw&s=10",
+        genre: "classic",
+        language: "english"
     },
 
     {
@@ -49,12 +59,62 @@ const books = [
         title: "Pride and Prejudice",
         author: "Jane Austen",
         price: 329,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTovy_OmGZIEdyamtmV1ZD8rmgitXGKqSQpwl2fVLIIdQ&s"
-    }
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTovy_OmGZIEdyamtmV1ZD8rmgitXGKqSQpwl2fVLIIdQ&s",
+        genre: "romcom",
+        language: "english"
+    },
 
+    {
+    id: 7,
+    title: "The Silent Patient",
+    author: "Alex Michaelides",
+    price: 399,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJQJQJQJQJQ",
+    genre: "thriller",
+    language: "english"
+},
+
+{
+    id: 8,
+    title: "Verity",
+    author: "Colleen Hoover",
+    price: 399,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQKQKQKQKQ",
+    genre: "thriller",
+    language: "english"
+},
+
+{
+    id: 9,
+    title: "Dune",
+    author: "Frank Herbert",
+    price: 449,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLQLQLQLQLQ",
+    genre: "science-fiction",
+    language: "english"
+},
+
+{
+    id: 10,
+    title: "Godaan",
+    author: "Munshi Premchand",
+    price: 249,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMQMQMQMQMQ",
+    genre: "classic",
+    language: "hindi"
+},
+
+{
+    id: 11,
+    title: "Pinjar",
+    author: "Amrita Pritam",
+    price: 299,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNQNQNQNQNQ",
+    genre: "classic",
+    language: "punjabi"
+}
 
 ];
-
 
 // GET USERS FROM LOCAL STORAGE
 let users =
@@ -70,10 +130,7 @@ let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
 
 
-
-
 // LOGIN POPUP
-
 
 const loginButton =
     document.getElementById("login-button");
@@ -83,8 +140,6 @@ const loginPopup =
 
 const closeLogin =
     document.getElementById("close-login");
-
-
 
 if (loginButton) {
 
@@ -107,9 +162,6 @@ if (closeLogin) {
     });
 
 }
-
-
-
 
 // SIGNUP POPUP
 
@@ -148,9 +200,6 @@ if (closeSignup) {
     });
 
 }
-
-
-
 
 // GO BACK TO LOGIN
 
@@ -265,9 +314,6 @@ if (signupForm) {
 
 }
 
-
-
-
 // LOGIN
 
 
@@ -345,8 +391,6 @@ if (loginForm) {
 }
 
 
-
-
 // LOGOUT
 
 
@@ -357,8 +401,6 @@ function logout() {
     window.location.reload();
 
 }
-
-
 
 
 // SHOW USER IN NAVBAR
@@ -442,8 +484,6 @@ if (bookContainer) {
     });
 
 }
-
-
 
 
 // ADD BOOK TO CART
@@ -748,8 +788,6 @@ function removeFromCart(id) {
 }
 
 
-
-
 // CLEAR CART
 
 
@@ -762,9 +800,7 @@ if (clearCart) {
 
     clearCart.addEventListener("click", function() {
 
-
         cart = [];
-
 
         saveCart();
 

@@ -40,59 +40,164 @@
 
     <nav class="navbar">
 
-        <a href="index.html" class="brand">
 
-            <div class="brand-symbol">
-                B
-            </div>
+    <a href="index.html" class="brand">
 
-            <div>
+        <div class="brand-symbol">
+            B
+        </div>
 
-                <strong>
-                    BOOKVERSE
-                </strong>
+        <div>
 
-                <small>
-                    STORIES BEYOND PAGES
-                </small>
+            <strong>
+                BOOKVERSE
+            </strong>
 
-            </div>
-
-        </a>
-
-
-        <div class="nav-center">
-
-            <a href="index.html">
-                HOME
-            </a>
-
-            <a href="books.html" class="nav-active">
-                EXPLORE
-            </a>
-
-            <a href="cart.html">
-                CART
-            </a>
+            <small>
+                STORIES BEYOND PAGES
+            </small>
 
         </div>
 
+    </a>
 
-        <div class="nav-right">
 
-            <span id="user-area"></span>
+
+    <div class="nav-center">
+
+        <a href="index.html" class="nav-active">
+            HOME
+        </a>
+
+        <a href="books.html">
+            EXPLORE
+        </a>
+
+        <a href="cart.html">
+            CART
+        </a>
+
+    </div>
+
+
+
+    <div class="nav-right">
+
+        <span id="user-area"></span>
+
+        <button
+            id="login-button"
+            class="login-button">
+
+            SIGN IN
+
+        </button>
+
+    </div>
+
+
+</nav>
+
+
+<!-- =========================
+     BOOK FILTER NAVBAR
+========================= -->
+
+<nav class="book-filter-nav">
+
+    <div class="book-filter-left">
+
+        <span>
+            BROWSE BY
+        </span>
+
+    </div>
+
+
+    <div class="book-filter-right">
+
+        <!-- GENRES -->
+
+        <div class="genre-menu">
 
             <button
-                id="login-button"
-                class="login-button">
+                id="genre-button"
+                class="filter-button">
 
-                SIGN IN
+                GENRES ▾
 
             </button>
 
+
+            <div
+                id="genre-dropdown"
+                class="filter-dropdown">
+
+                <a href="books.html">
+                    Popular
+                </a>
+
+                <a href="books.html?genre=thriller">
+                    Thrillers
+                </a>
+
+                <a href="books.html?genre=romcom">
+                    Rom-Coms
+                </a>
+
+                <a href="books.html?genre=non-fiction">
+                    Non-Fiction
+                </a>
+
+                <a href="books.html?genre=science-fiction">
+                    Science Fiction
+                </a>
+
+            </div>
+
         </div>
 
-    </nav>
+
+        <!-- LANGUAGES -->
+
+        <div class="language-menu">
+
+            <button
+                id="language-button"
+                class="filter-button">
+
+                LANGUAGES ▾
+
+            </button>
+
+
+            <div
+                id="language-dropdown"
+                class="filter-dropdown">
+
+                <a href="books.html?language=english">
+                    English
+                </a>
+
+                <a href="books.html?language=hindi">
+                    Hindi
+                </a>
+
+                <a href="books.html?language=punjabi">
+                    Punjabi
+                </a>
+
+                <a href="books.html?language=french">
+                    French
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
 
 
 
@@ -476,6 +581,7 @@
 
 
     <script src="script.js"></script>
+    <script src="genre.js"></script>
 
 </body>
 
