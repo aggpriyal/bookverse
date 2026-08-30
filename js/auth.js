@@ -1,4 +1,3 @@
-
 // LOGIN POPUP
 const loginButton =
     document.getElementById("login-button");
@@ -87,7 +86,6 @@ if (showLogin) {
 }
 
 
-
 // SIGN UP
 const signupForm =
     document.getElementById("signup-form");
@@ -109,7 +107,48 @@ if (signupForm) {
         const password =
             document.getElementById("signup-password").value;
 
+        if (
+            !email.includes("@") || (!email.endsWith(".com") && !email.endsWith(".in"))
+        ) {
 
+            document.getElementById(
+                "signup-message"
+            ).innerText =
+                "Please enter a valid email with @ and .com or .in.";
+
+            return;
+
+        }
+
+        const hasLetter =
+            /[A-Za-z]/.test(password);
+
+        const hasNumber =
+            /[0-9]/.test(password);
+
+
+        if (password.length < 6) {
+
+            document.getElementById(
+                "signup-message"
+            ).innerText =
+                "Password must be at least 6 characters.";
+
+            return;
+
+        }
+
+
+        if (!hasLetter || !hasNumber) {
+
+            document.getElementById(
+                "signup-message"
+            ).innerText =
+                "Password must contain letters and numbers.";
+
+            return;
+
+        }
 
         const userExists =
             users.find(function(user) {
@@ -129,6 +168,8 @@ if (signupForm) {
             return;
 
         }
+        
+        // CREATE NEW USER
 
         const newUser = {
 
@@ -139,7 +180,15 @@ if (signupForm) {
             password: password
 
         };
+
+
+        // ADD USER
+
         users.push(newUser);
+
+
+        // SAVE USER
+
         localStorage.setItem(
             "users",
             JSON.stringify(users)
