@@ -120,11 +120,9 @@ if (signupForm) {
 
         }
 
-        const hasLetter =
-            /[A-Za-z]/.test(password);
+        const hasLetter = /[A-Za-z]/.test(password);
 
-        const hasNumber =
-            /[0-9]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
 
 
         if (password.length < 6) {
@@ -168,15 +166,12 @@ if (signupForm) {
             return;
 
         }
-        
+
         // CREATE NEW USER
 
         const newUser = {
-
             name: name,
-
             email: email,
-
             password: password
 
         };
@@ -229,8 +224,7 @@ if (loginForm) {
         const user =
             users.find(function(user) {
 
-                return user.email === email &&
-                       user.password === password;
+                return user.email === email && user.password === password;
 
             });
 
@@ -253,7 +247,27 @@ if (loginForm) {
 
                 loginPopup.style.display = "none";
 
-                window.location.reload();
+
+                // CHECK IF USER HAS TAKEN THE QUIZ
+
+                const bookTaste =
+                    localStorage.getItem(
+                        "bookTaste_" + user.email
+                    );
+
+
+                if (!bookTaste) {
+
+                    window.location.href =
+                        "quiz.html";
+
+                }
+
+                else {
+
+                    window.location.reload();
+
+                }
 
             }, 500);
 

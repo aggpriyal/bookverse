@@ -3581,3 +3581,243 @@ footer {
     margin-left: 8px;
 
 }
+
+
+/* =========================
+   BOOK TASTE QUIZ
+========================= */
+
+.quiz-page {
+
+    min-height: 75vh;
+
+    padding: 70px 8%;
+
+}
+
+
+.quiz-container {
+
+    max-width: 850px;
+
+    margin: auto;
+
+}
+
+
+.quiz-heading {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+
+.quiz-heading span {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.quiz-heading h1 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 50px;
+
+    margin: 15px 0;
+
+}
+
+
+.quiz-heading h1 i {
+
+    font-weight: 400;
+
+}
+
+
+.quiz-heading p {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    max-width: 550px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+}
+
+
+.quiz-question {
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.quiz-question h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.quiz-question label {
+
+    display: block;
+
+    padding: 14px 18px;
+
+    margin: 8px 0;
+
+    border: 1px solid var(--line);
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.2s;
+
+}
+
+
+.quiz-question label:hover {
+
+    transform: translateX(4px);
+
+}
+
+
+.quiz-question input {
+
+    margin-right: 10px;
+
+}
+
+
+.quiz-button {
+
+    width: 100%;
+
+    margin-top: 35px;
+
+    padding: 16px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.quiz-button span {
+
+    margin-left: 10px;
+
+}
+
+
+/* RESULT */
+
+.quiz-result {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+}
+
+
+.quiz-result > span {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.quiz-result h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 40px;
+
+    margin: 15px 0;
+
+}
+
+
+.quiz-result p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    line-height: 1.7;
+
+}
+
+
+.quiz-result button {
+
+    margin-top: 30px;
+
+    padding: 14px 25px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.quiz-result button span {
+
+    margin-left: 8px;
+
+}
+
+
+.quiz-result .retake-button {
+
+    margin-left: 10px;
+
+    border: 1px solid var(--line);
+
+}
+
