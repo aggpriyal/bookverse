@@ -85,7 +85,7 @@ const books = [
         title: "The Da Vinci Code",
         author: "Dan Brown",
         price: 399,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPFR0TSYqjS6mkHKGtMmEWHUgWnua4UKqAGYu6xhQbnQ&s",
         genre: "thriller",
         language: "english"
     },
@@ -95,7 +95,7 @@ const books = [
         title: "Dune",
         author: "Frank Herbert",
         price: 499,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcAF2Z5-w1qR8C57j871LaHuH7ef68suIBz7zRRG_WRA&s=10",
         genre: "science-fiction",
         language: "english"
     },
@@ -105,7 +105,7 @@ const books = [
         title: "Project Hail Mary",
         author: "Andy Weir",
         price: 449,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW_miImJ-HoyZ46wihBi5cjDCCp_bO0mN_ykTM_CpoOA&s=10",
         genre: "science-fiction",
         language: "english"
     },
@@ -115,7 +115,7 @@ const books = [
         title: "The Fault in Our Stars",
         author: "John Green",
         price: 299,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjre_2R1_5hEQtqhgGk8_9i4vPqjyYWeyLS2M4uXrK3g&s",
         genre: "romcom",
         language: "english"
     },
@@ -125,7 +125,7 @@ const books = [
         title: "Me Before You",
         author: "Jojo Moyes",
         price: 349,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR07qm9J7DGUij193dulfqzAQ46pQJqvct87rD_U4hvKQ&s=10",
         genre: "romcom",
         language: "english"
     },
@@ -135,7 +135,7 @@ const books = [
         title: "The 7 Habits of Highly Effective People",
         author: "Stephen R. Covey",
         price: 499,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDdjt4jv93WnnhXYn6YGznVbW6V3fpAEv4FIqPATG1Vg&s",
         genre: "non-fiction",
         language: "english"
     },
@@ -145,7 +145,7 @@ const books = [
         title: "Rich Dad Poor Dad",
         author: "Robert Kiyosaki",
         price: 349,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT2Zk6v_JxxB08JlN5xIkLORzjrUhJwBoVDb76jTL3Hg&s=10",
         genre: "non-fiction",
         language: "english"
     },
@@ -155,7 +155,7 @@ const books = [
         title: "Sapiens",
         author: "Yuval Noah Harari",
         price: 499,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvpS0xBKwCh4CuRXkptnWH-YZ4lGo0XlFuaERQlfkcDA&s=10",
         genre: "non-fiction",
         language: "english"
     },
@@ -165,7 +165,7 @@ const books = [
         title: "Godaan",
         author: "Munshi Premchand",
         price: 249,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2_oVcGT25HUHZ_rtHAbTyIp1lRtjpROfSRuEG7ydKGg&s",
         genre: "classic",
         language: "hindi"
     },
@@ -175,7 +175,7 @@ const books = [
         title: "Raag Darbari",
         author: "Shri Lal Shukla",
         price: 299,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWQpC2_WCcub3yYyIJ_XODVTqLzpEj0-009rYhbRKDnQ&s=10",
         genre: "classic",
         language: "hindi"
     },
@@ -185,7 +185,7 @@ const books = [
         title: "Pinjar",
         author: "Amrita Pritam",
         price: 299,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4T3oe1RU3KqTEfQARy-qdr3G3EoxS_tURE3WGBnPWYA&s=10",
         genre: "classic",
         language: "punjabi"
     },
@@ -195,7 +195,7 @@ const books = [
         title: "Madame Bovary",
         author: "Gustave Flaubert",
         price: 329,
-        image: "YOUR IMAGE URL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpFNxansjyJkvvsCCOM2HRkvA4ApG8LlWYXvPkgG0qYQ&s=10",
         genre: "classic",
         language: "french"
     }
@@ -381,8 +381,7 @@ if (languageButton) {
 document.addEventListener("click", function(event) {
 
     if (
-        !event.target.closest(".genre-menu") &&
-        !event.target.closest(".language-menu")
+        !event.target.closest(".genre-menu") && !event.target.closest(".language-menu")
     ) {
 
         if (genreDropdown) {

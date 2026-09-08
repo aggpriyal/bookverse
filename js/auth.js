@@ -1,4 +1,3 @@
-// LOGIN POPUP
 const loginButton =
     document.getElementById("login-button");
 
@@ -18,8 +17,6 @@ if (loginButton) {
     });
 
 }
-
-
 if (closeLogin) {
 
     closeLogin.addEventListener("click", function() {
@@ -29,9 +26,6 @@ if (closeLogin) {
     });
 
 }
-
-
-
 // SIGNUP POPUP
 const signupPopup =
     document.getElementById("signup-popup");
@@ -65,9 +59,6 @@ if (closeSignup) {
     });
 
 }
-
-
-
 // GO BACK TO LOGIN
 const showLogin =
     document.getElementById("show-login");
@@ -297,8 +288,6 @@ function logout() {
     window.location.reload();
 
 }
-
-
 
 // SHOW USER IN NAVBAR
 

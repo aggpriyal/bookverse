@@ -6,10 +6,7 @@ const quizForm =
 const quizResult =
     document.getElementById("quiz-result");
 
-
-
 // CHECK LOGIN
-
 
 if (!currentUser) {
 
@@ -19,25 +16,17 @@ if (!currentUser) {
 
 }
 
-
-
 // CHECK IF QUIZ WAS ALREADY DONE
-
-
 const savedTaste =
     localStorage.getItem(
         "bookTaste_" + currentUser.email
     );
-
 
 if (savedTaste) {
 
     showResult(savedTaste);
 
 }
-
-
-
 // QUIZ SUBMIT
 
 
@@ -148,9 +137,6 @@ if (quizForm) {
     );
 
 }
-
-
-
 // SHOW RESULT
 
 
@@ -207,10 +193,7 @@ function showResult(genre) {
 
 
     // HIDE QUESTIONS
-
     quizForm.style.display = "none";
-
-
     // SHOW RESULT
 
     quizResult.innerHTML = `
@@ -251,12 +234,7 @@ function showResult(genre) {
     `;
 
 }
-
-
-
 // SHOW RECOMMENDED BOOKS
-
-
 function showRecommendations(genre) {
 
     localStorage.setItem(
@@ -269,23 +247,14 @@ function showRecommendations(genre) {
         "books.html?genre=" + genre;
 
 }
-
-
-
 // RETAKE QUIZ
-
-
 function retakeQuiz() {
 
     localStorage.removeItem(
         "bookTaste_" + currentUser.email
     );
-
-
     quizResult.innerHTML = "";
-
     quizForm.reset();
-
     quizForm.style.display = "block";
 
 }

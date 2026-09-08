@@ -1,8 +1,3 @@
-// =========================
-// CHECKOUT
-// =========================
-
-
 // GET ELEMENTS
 
 const checkoutForm =
@@ -15,10 +10,8 @@ const checkoutTotal =
     document.getElementById("checkout-total");
 
 
-// =========================
-// CHECK LOGIN
-// =========================
 
+// CHECK LOGIN 
 if (!currentUser) {
 
     alert("Please login before checkout.");
@@ -28,9 +21,9 @@ if (!currentUser) {
 }
 
 
-// =========================
+
 // DISPLAY ORDER
-// =========================
+
 
 function displayCheckout() {
 
@@ -86,21 +79,14 @@ function displayCheckout() {
         `;
 
     });
-
-
     checkoutTotal.innerText = total;
-
 }
-
 
 // DISPLAY CART
 
 displayCheckout();
-
-
-// =========================
 // PLACE ORDER
-// =========================
+
 
 if (checkoutForm) {
 
@@ -192,8 +178,6 @@ if (checkoutForm) {
                 date: new Date().toLocaleString()
 
             };
-
-
             // SAVE ORDER
 
             localStorage.setItem(

@@ -2,12 +2,8 @@
 let users =
     JSON.parse(localStorage.getItem("users")) || [];
 
-
 let currentUser =
     JSON.parse(localStorage.getItem("currentUser"));
-
-
-
 
 let cart = [];
 
