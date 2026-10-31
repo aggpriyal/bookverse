@@ -9,8 +9,6 @@ const checkoutItems =
 const checkoutTotal =
     document.getElementById("checkout-total");
 
-
-
 // CHECK LOGIN 
 if (!currentUser) {
 
@@ -20,15 +18,11 @@ if (!currentUser) {
 
 }
 
-
-
 // DISPLAY ORDER
-
 
 function displayCheckout() {
 
     checkoutItems.innerHTML = "";
-
 
     // CHECK CART
 
@@ -43,9 +37,7 @@ function displayCheckout() {
 
     }
 
-
     let total = 0;
-
 
     cart.forEach(function(item) {
 
@@ -53,7 +45,7 @@ function displayCheckout() {
             total +
             item.price * item.quantity;
 
-
+            
         checkoutItems.innerHTML += `
 
             <div class="checkout-item">

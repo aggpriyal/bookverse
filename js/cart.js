@@ -30,7 +30,7 @@ function displayCart() {
 
     }
 
-
+    
     let total = 0;
 
 
@@ -65,24 +65,18 @@ function displayCart() {
 
                 <div>
 
-                    <button
-                        onclick="decreaseQuantity(${item.id})">
-
+                    <button onclick="decreaseQuantity('${item.id}')">
                         -
-
                     </button>
+
                     ${item.quantity}
-                    <button
-                        onclick="increaseQuantity(${item.id})">
 
+                    <button onclick="increaseQuantity('${item.id}')">
                         +
-
                     </button>
-                    <button
-                        onclick="removeFromCart(${item.id})">
 
+                    <button onclick="removeFromCart('${item.id}')">
                         Remove
-
                     </button>
 
                 </div>
@@ -178,7 +172,6 @@ function removeFromCart(id) {
     displayCart();
 
 }
-
 
 
 const clearCart =
