@@ -11,6 +11,8 @@ const User = require("./models/user");
 
 const app = express();
 
+const Order = require("./models/order");
+
 const verifyToken = require("./middleware/authMiddleware");
 const verifyAdmin = require("./middleware/adminMiddleware");
 
@@ -182,6 +184,136 @@ app.delete("/api/books/:id", verifyToken, verifyAdmin, async (req, res) => {
     }
 });
 
+// PLACE ORDER (LOGIN REQUIRED)
+app.post("/api/orders", verifyToken, async (req, res) => {
+    try {
+        const {
+            name,
+            email,
+            address,
+            pincode,
+            paymentMethod,
+            items
+        } = req.body;
+
+        // CHECK REQUIRED DETAILS
+        if (!name || !email || !address || !pincode || !paymentMethod) {
+            return res.status(400).json({
+                message: "Please fill in all checkout details."
+            });
+        }
+
+        // CHECK PIN CODE
+        if (!/^[0-9]{6}$/.test(pincode)) {
+            return res.status(400).json({
+                message: "Please enter a valid 6 digit PIN code."
+            });
+        }
+
+        // CHECK PAYMENT METHOD
+        if (!["cod", "upi", "card"].includes(paymentMethod)) {
+            return res.status(400).json({
+                message: "Invalid payment method."
+            });
+        }
+
+        // CHECK CART ITEMS
+        if (!Array.isArray(items) || items.length === 0) {
+            return res.status(400).json({
+                message: "Your cart is empty."
+            });
+        }
+
+        // VALIDATE BOOK IDS AND QUANTITIES
+        for (const item of items) {
+            if (
+                !item.bookId ||
+                !mongoose.Types.ObjectId.isValid(item.bookId) ||
+                !Number.isInteger(item.quantity) ||
+                item.quantity < 1
+            ) {
+                return res.status(400).json({
+                    message: "Invalid book or quantity in cart."
+                });
+            }
+        }
+
+        // FIND BOOKS IN MONGODB
+        const bookIds = items.map(item => item.bookId);
+
+        const books = await Book.find({
+            _id: { $in: bookIds }
+        });
+
+        if (books.length !== new Set(bookIds.map(String)).size) {
+            return res.status(400).json({
+                message: "One or more books could not be found."
+            });
+        }
+
+        // CREATE ORDER ITEMS USING DATABASE PRICES
+        let total = 0;
+
+        const orderItems = items.map(item => {
+            const book = books.find(
+                book => book._id.toString() === item.bookId
+            );
+
+            const itemTotal = book.price * item.quantity;
+            total += itemTotal;
+
+            return {
+                book: book._id,
+                title: book.title,
+                author: book.author,
+                price: book.price,
+                quantity: item.quantity
+            };
+        });
+
+        // SAVE ORDER
+        const newOrder = await Order.create({
+            user: req.userId,
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            address: address.trim(),
+            pincode: pincode,
+            items: orderItems,
+            total: total,
+            paymentMethod: paymentMethod
+        });
+
+        res.status(201).json({
+            message: "Order placed successfully!",
+            order: newOrder
+        });
+
+    } catch (error) {
+        console.error("Place order error:", error.message);
+
+        res.status(500).json({
+            message: "Could not place your order."
+        });
+    }
+});
+
+// GET MY ORDERS (LOGIN REQUIRED)
+app.get("/api/orders/my-orders", verifyToken, async (req, res) => {
+    try {
+        const orders = await Order.find({
+            user: req.userId
+        }).sort({ createdAt: -1 });
+
+        res.json(orders);
+
+    } catch (error) {
+        console.error("Fetch orders error:", error.message);
+
+        res.status(500).json({
+            message: "Could not fetch your orders."
+        });
+    }
+});
 
 // SIGNUP ROUTE
 app.post("/api/auth/signup", async (req, res) => {

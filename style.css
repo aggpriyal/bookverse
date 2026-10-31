@@ -3821,3 +3821,189 @@ footer {
 
 }
 
+/* MY ORDERS PAGE */
+
+.orders-page {
+    min-height: 70vh;
+    padding: 70px 8%;
+}
+
+.orders-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.orders-heading {
+    margin-bottom: 45px;
+}
+
+.orders-heading > span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7189a5;
+}
+
+.orders-heading h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    margin: 12px 0;
+}
+
+.orders-heading h1 i {
+    color: #7896b5;
+}
+
+.orders-heading p {
+    color: #718096;
+    font-size: 15px;
+}
+
+.orders-loading {
+    color: #718096;
+    padding: 25px 0;
+}
+
+.order-card {
+    background: #ffffff;
+    border: 1px solid #e3eaf2;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(40, 70, 100, 0.04);
+}
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8edf3;
+}
+
+.order-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #8494a8;
+}
+
+.order-top p,
+.order-bottom p {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 7px;
+    color: #34465a;
+}
+
+.order-books {
+    padding: 20px 0;
+}
+
+.order-books h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.order-book {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.order-book strong {
+    font-size: 14px;
+    color: #34465a;
+}
+
+.order-book p {
+    font-size: 12px;
+    color: #8494a8;
+    margin-top: 4px;
+}
+
+.order-book span {
+    font-size: 13px;
+    color: #52677e;
+    white-space: nowrap;
+}
+
+.order-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid #e8edf3;
+}
+
+.order-bottom small {
+    color: #8494a8;
+    font-size: 12px;
+}
+
+.order-bottom h3 {
+    color: #587da5;
+    margin-top: 5px;
+}
+
+.orders-empty {
+    text-align: center;
+    padding: 55px 20px;
+    background: #f7f9fc;
+    border-radius: 12px;
+}
+
+.orders-empty h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.orders-empty p {
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+.orders-shop-button {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #7896b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.orders-shop-button:hover {
+    background: #587da5;
+}
+
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+    .orders-page {
+        padding: 45px 5%;
+    }
+
+    .orders-heading h1 {
+        font-size: 34px;
+    }
+
+    .order-card {
+        padding: 18px;
+    }
+
+    .order-bottom {
+        flex-direction: column;
+    }
+
+}
