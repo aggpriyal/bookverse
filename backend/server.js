@@ -16,12 +16,60 @@ const Order = require("./models/order");
 const verifyToken = require("./middleware/authMiddleware");
 const verifyAdmin = require("./middleware/adminMiddleware");
 
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
 app.use(cors());
 app.use(express.json());
+app.use(
+    "/uploads",
+    express.static(path.join(__dirname, "uploads"))
+);
 
 // HOME ROUTE
 app.get("/", (req, res) => {
     res.send("BookVerse backend is working");
+});
+
+
+// CREATE UPLOADS FOLDER IF IT DOES NOT EXIST
+const uploadFolder = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(uploadFolder)) {
+    fs.mkdirSync(uploadFolder);
+}
+
+// MULTER STORAGE CONFIGURATION
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, uploadFolder);
+    },
+
+    filename: function(req, file, cb) {
+        const extension = path.extname(file.originalname);
+        const filename = Date.now() + extension;
+
+        cb(null, filename);
+    }
+});
+
+// ACCEPT ONLY IMAGE FILES
+const fileFilter = function(req, file, cb) {
+    if (file.mimetype.startsWith("image/")) {
+        cb(null, true);
+    } else {
+        cb(new Error("Only image files are allowed."));
+    }
+};
+
+// MULTER UPLOAD CONFIGURATION
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter,
+    limits: {
+        fileSize: 5 * 1024 * 1024
+    }
 });
 
 // GET ALL BOOKS
@@ -37,9 +85,13 @@ app.get("/api/books", async (req, res) => {
 });
 
  // ADD A NEW BOOK (ADMIN ONLY)
-app.post("/api/books", verifyToken, verifyAdmin, async (req, res) => {
+app.post("/api/books", verifyToken, verifyAdmin, upload.single("image"), async (req, res) => {
     try {
-        const { title, author, price, genre, language, image } = req.body;
+        const { title, author, price, genre, language } = req.body;
+
+        const image = req.file
+            ? `/uploads/${req.file.filename}`
+            : req.body.image;
 
         // Check required fields
         if (!title || !author || price === undefined || price === null || price === "") {
@@ -81,9 +133,13 @@ app.post("/api/books", verifyToken, verifyAdmin, async (req, res) => {
 
 
  // EDIT AN EXISTING BOOK (ADMIN ONLY)
-app.put("/api/books/:id", verifyToken, verifyAdmin, async (req, res) => {
+app.put("/api/books/:id", verifyToken, verifyAdmin, upload.single("image"), async (req, res) => {
     try {
-        const { title, author, price, genre, language, image } = req.body;
+        const { title, author, price, genre, language } = req.body;
+
+        const image = req.file
+            ? `/uploads/${req.file.filename}`
+            : req.body.image;
 
         // Find the book using its ID
         const book = await Book.findById(req.params.id);
@@ -296,6 +352,7 @@ app.post("/api/orders", verifyToken, async (req, res) => {
         });
     }
 });
+
 
 // GET MY ORDERS (LOGIN REQUIRED)
 app.get("/api/orders/my-orders", verifyToken, async (req, res) => {

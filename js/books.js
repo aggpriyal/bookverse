@@ -194,7 +194,10 @@ async function loadBooks() {
         books = data.map(function(book) {
             return {
                 ...book,
-                id: book._id
+                id: book._id,
+                image: book.image.startsWith("http")
+                    ? book.image
+                    : `http://localhost:3000${book.image}`
             };
         });
 
